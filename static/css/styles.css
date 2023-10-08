@@ -1,0 +1,10 @@
+li {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 1rem;
+}
+
+img {
+    width: 4rem;
+    height: auto;
+}

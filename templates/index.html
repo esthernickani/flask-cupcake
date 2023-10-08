@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>Cupcakes</h1>
+    <ul>
+    {% for cupcake in cupcakes %}
+        <li>
+            <span><b>Flavor</b>: {{cupcake.flavor}}</span>
+            <span><b>Size</b>: {{cupcake.size}}</span>
+            <span><b>Rating</b>: {{cupcake.rating}}</span>
+            <img src="{{cupcake.image}}" alt="" class="">
+        </li>
+    {% endfor %}
+    </ul>
+
+    <h2>Add new cupcake</h2>
+    <form id="cupcake-add-form">
+        {{form.hidden_tag()}}
+        {% for field in form 
+            if field.widget.input_type != 'hidden' %}
+        
+        <p>
+            {{ field.label }}
+            {{ field }}
+
+            {% for error in field.errors %}
+                {{error}}
+            {% endfor %}
+        </p>
+        {% endfor %}
+
+        <button type="submit" class="submit-btn">Submit</button>
+    </form>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="/static/js/script.js"></script>
+</body>
+</html>
